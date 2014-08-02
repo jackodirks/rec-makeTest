@@ -1,0 +1,7 @@
+This is a test for recrusive make.
+
+A proof of concept to figure out how multiple little projects can work together as one.
+This involves a pre-build library, a liberary that needs to be build and a main program.
+
+
+The goal of this project is M4/Make and not C.
