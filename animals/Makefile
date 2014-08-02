@@ -1,3 +1,4 @@
+#$(CC) -MMD $(CFLAGS) $< $@.d
 CC=gcc
 AR=ar
 RANLIB=ranlib
@@ -9,7 +10,7 @@ LIB=
 LIBDIR= -L lib/
 #LDFLAGS=-s $(LIB)
 LDFLAGS=
-CFLAGS=-Wall -std=c99 $(INC)
+CFLAGS=-Wall -std=c99 $(INC) -MMD -MP
 ARFLAGS=rcs
 
 ODIR=obj/
@@ -39,6 +40,8 @@ profile: CFLAGS +=-DPROFILE -g -pg
 profile: LDFLAGS +=-g -pg 
 profile: pre-build $(TARGET)
 
+-include $(OFILES:%.o=%.d)
+-include $(DOFILES:%.o=%.d)
 
 pre-build:
 	@mkdir -p $(ODIR)
@@ -48,7 +51,6 @@ pre-build:
 	 
 $(DODIR)%.o: $(SRCDIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
-	$(CC) -MM $(CFLAGS) $< > $@.d
 
 $(ODIR)%.o: $(SRCDIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
