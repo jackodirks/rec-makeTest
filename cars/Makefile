@@ -12,7 +12,7 @@ LDFLAGS=
 CFLAGS=-Wall -std=c99 $(INC)
 ODIR=obj/
 OFILES = $(patsubst src/%,$(ODIR)%,$(_OFILES))
-TARGET=libcar.a
+TARGET=libcars.a
 ARFLAGS=rcs
 
 .PHONY: all clean debug

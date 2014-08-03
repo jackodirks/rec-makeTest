@@ -1,7 +1,7 @@
 #Main Makefile, serves no purpose but to active the other Makefiles
 
 SHELL = /bin/bash
-DIRS = animals
+DIRS = animals program
 
 .PHONY: all debug clean
 

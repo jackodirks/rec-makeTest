@@ -1,4 +1,3 @@
-#$(CC) -MMD $(CFLAGS) $< $@.d
 CC=gcc
 AR=ar
 RANLIB=ranlib
@@ -13,18 +12,15 @@ LDFLAGS=
 CFLAGS=-Wall -std=c99 $(INC) -MMD -MP
 ARFLAGS=rcs
 
-ODIR=obj/
-OFILES=$(patsubst src/%,$(ODIR)%,$(_OFILES))
-
-DODIR= debug_obj/
-DOFILES=$(patsubst src/%,$(DODIR)%,$(_OFILES))
-
 TARGETDIR=release/
 TARGET=$(TARGETDIR)libanimals.a
+ODIR=$(TARGETDIR)obj/
+OFILES=$(patsubst src/%,$(ODIR)%,$(_OFILES))
 
 DTARGETDIR=debug/
 DTARGET=$(DTARGETDIR)libanimals.a
-
+DODIR=$(DTARGETDIR)debug_obj/
+DOFILES=$(patsubst src/%,$(DODIR)%,$(_OFILES))
 
 .PHONY: all clean debug profile
 
