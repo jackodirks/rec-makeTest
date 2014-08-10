@@ -5,3 +5,6 @@ This involves a pre-build library, a liberary that needs to be build and a main 
 
 
 The goal of this project is M4/Make and not C.
+
+Used sources:
+GNU Make Manual
